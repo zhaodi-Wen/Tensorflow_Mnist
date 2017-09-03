@@ -26,11 +26,11 @@ def init_weights(shape):
     return tf.Variable(tf.random_normal(shape, stddev=0.01))
 
 
-w1 = init_weights([3, 3, 1, 32])  # 3X3的卷积核，获得32个特征
-w2 = init_weights([3, 3, 32, 64])  # 3X3的卷积核，获得64个特征
-w3 = init_weights([3, 3, 64, 128])  # 3X3的卷积核，获得128个特征
-w4 = init_weights([128 * 4 * 4, 625])  # 从卷积层到全连层
-w_o = init_weights([625, 10])  # 从全连层到输出层
+w1 = init_weights([3, 3, 1, 32])        # 3X3的卷积核，获得32个特征
+w2 = init_weights([3, 3, 32, 64])       # 3X3的卷积核，获得64个特征
+w3 = init_weights([3, 3, 64, 128])      # 3X3的卷积核，获得128个特征
+w4 = init_weights([128 * 4 * 4, 625])   # 从卷积层到全连层
+w_o = init_weights([625, 10])           # 从全连层到输出层
 
 p_keep_conv = tf.placeholder("float")
 p_keep_hidden = tf.placeholder("float")
@@ -85,14 +85,14 @@ if not os.path.exists(ckpt_dir):
 
 """------------------训练模型---------------------"""
 train_batch_size = 128  # 训练集的mini_batch_size=128
-test_batch_size = 256  # 测试集中调用的batch_size=256
+test_batch_size = 256   # 测试集中调用的batch_size=256
 epoches = 5  # 迭代周期
 with tf.Session() as sess:
     """-------训练模型--------"""
-    # # 初始化所有变量
-    # tf.global_variables_initializer().run()
-    #
-    # # 训练操作
+    # 初始化所有变量
+    tf.global_variables_initializer().run()
+
+    # 训练操作
     # for i in range(epoches):
     #     train_batch = zip(range(0, len(trX), train_batch_size),
     #                       range(train_batch_size, len(trX) + 1, train_batch_size))
@@ -101,7 +101,7 @@ with tf.Session() as sess:
     #                                       p_keep_conv: 0.8, p_keep_hidden: 0.5})
     #     # 每个周期用测试集中随机抽出test_batch_size个图片进行测试
     #     test_indices = np.arange(len(teX))  # 返回一个array[0,1...len(teX)]
-    #     np.random.shuffle(test_indices)  # 打乱这个array
+    #     np.random.shuffle(test_indices)     # 打乱这个array
     #     test_indices = test_indices[0:test_batch_size]
     #
     #     # 获取测试集test_batch_size章图片的的预测结果
@@ -120,7 +120,7 @@ with tf.Session() as sess:
 
     """-----加载模型，用导入的图片进行测试--------"""
     # 载入图片
-    src = cv2.imread('./Pictures/2.png')
+    src = cv2.imread('./Pictures/8.png')
     cv2.imshow("待测图片", src)
 
     # 将图片转化为28*28的灰度图
