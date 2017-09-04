@@ -120,7 +120,7 @@ with tf.Session() as sess:
 
     """-----加载模型，用导入的图片进行测试--------"""
     # 载入图片
-    src = cv2.imread('./Pictures/8.png')
+    src = cv2.imread('./Pictures/9.png')
     cv2.imshow("待测图片", src)
 
     # 将图片转化为28*28的灰度图
